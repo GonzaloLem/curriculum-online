@@ -1,0 +1,9 @@
+---
+interface Props {
+	titulo: string;
+	estilos?:any;
+}
+const { titulo, estilos } = Astro.props;
+---
+
+<span class=`text-sm rounded-full bg-amber-600 p-2 ${estilos}`>{titulo}</span>

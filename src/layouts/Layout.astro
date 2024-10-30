@@ -1,0 +1,71 @@
+---
+import Header from '../components/header/Header.astro';
+interface Props {
+	title: string;
+	descripcion:string;
+}
+const { title, descripcion } = Astro.props;
+//class="relative h-full w-full bg-slate-950"
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={descripcion} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="font-mono bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
+		<Header />
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	html
+	{
+		scroll-behavior: smooth;
+	}
+	body
+	{
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		min-width: 100vh;
+	}
+
+	@media (prefers-reduced-motion: reduce)
+	{
+		html
+		{
+			scroll-behavior: auto;
+		}
+	}
+
+	@media (max-width: 1023px)
+	{
+		section
+		{
+			width: 600px;
+			overflow: hidden;
+		}
+	}
+
+	@media (min-width: 1025px)
+	{
+		body 
+		{
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+			min-width: 100vh;
+		}
+		section
+		{
+			width: 850px;
+		}
+	}
+</style>

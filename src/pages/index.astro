@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Presentacion from '../components/presentacion/Presentacion.astro';
+import Proyectos from '../components/proyectos/Proyectos.astro';
+import Habilidades from '../components/habilidades/Habilidades.astro';
+//class="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)]"
+
+//<Habilidades id="habilidades" />
+---
+
+<Layout 
+	title="Curriculum de Gonzalo Lemiña - Desarrollador Full Stack" 
+	descripcion="Contratame para desarrollar tu pagina Web ideal.">
+	<main class="flex flex-col justify-center items-center">
+		<Presentacion id="sobremi" />
+		<Proyectos id="proyectos" />
+		<Habilidades id="habilidades" />
+	</main>
+</Layout>
+
+

@@ -1,0 +1,28 @@
+---
+import Distintivo from '../distintivo/Distintivo.astro';
+import Etiqueta from '../etiqueta/Etiqueta.astro';
+import GitHubIcon from '../../icons/GitHub.astro';
+import LinkedLinIcon from '../../icons/LinkedLin.astro';
+import EmailIcon from '../../icons/Email.astro';
+
+interface Props {
+	id: string;
+}
+const { id } = Astro.props;
+---
+
+<section id={id} class="flex justify-center items-center">
+    <div class="relative flex flex-col justify-center gap-5 lg:w-[850px] mt-60 text-white">
+        <img src="./foto-perfil.jpg" alt="Foto de Presentación" class=" w-12 h-12 rounded-full">
+        <h1 class="flex justify-center items-center gap-4 text-5xl font-bold">Hola, Soy Gonzalo Lemiña <Distintivo titulo="Diponible para trabajar"></Distintivo></h1>
+        <p class="text-2xl lg:w-[700px]">
+            <span class="text-cyan-600">Desarrollador Full Stack. </span> Constantemente me encuentro <span class="text-violet-500">aprendiendo y mejorando.</span>
+            En busca de desafios que pongan a prueba mis conocimientos y habilidades.
+        </p>
+        <nav class="flex gap-4">
+            <Etiqueta href="https://github.com/GonzaloLem"><GitHubIcon />GitHub</Etiqueta>
+            <Etiqueta href="https://www.linkedin.com/in/gonzalo-lemi%C3%B1a-bb3068234/"><LinkedLinIcon />LinkedLin</Etiqueta>
+            <Etiqueta ><EmailIcon />gonzalonl308@gmail.com</Etiqueta>
+        </nav>          
+    </div>
+</section>

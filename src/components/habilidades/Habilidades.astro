@@ -1,0 +1,71 @@
+---
+import HabilidadesIcon from "../../icons/Habilidades.astro";
+import CplusIcon from "../../icons/Cplus.astro";
+import TypescripIcono from "../../icons/Typescrip.astro";
+import PhpIcon from "../../icons/Php.astro";
+import AngularIcon from "../../icons/Angular.astro";
+import CssIcon from "../../icons/Css.astro";
+import SqlIcon from "../../icons/Sql.astro";
+import CsharpIcon from "../../icons/Csharp.astro";
+import ReactIcon from "../../icons/React.astro";
+import TailwindIcon from "../../icons/Tailwind.astro";
+import HtmlIcon from "../../icons/Html.astro";
+import BootStrapIcon from "../../icons/Bootstrap.astro";
+import JavaScriptIcon from "../../icons/Javascript.astro";
+import LaravelIcon from "../../icons/Laravel.astro";
+
+interface Props {
+	id: string;
+}
+const { id } = Astro.props;
+
+const ICONOS:any[] = 
+[
+    {svg:CplusIcon},//
+    {svg:CsharpIcon},//
+    {svg:JavaScriptIcon},//
+    {svg:TypescripIcono},//
+    {svg:AngularIcon},//
+    {svg:ReactIcon},//
+    {svg:PhpIcon},//
+    {svg:LaravelIcon},
+    {svg:CssIcon},//
+    {svg:HtmlIcon},//
+    {svg:SqlIcon},//
+    {svg:TailwindIcon},//
+    {svg:BootStrapIcon}//
+
+]
+//animate-[cscroll_15s_linear_infinite_alternate]
+---
+
+<section id={id} class="flex justify-center items-center mb-60">
+    <div class="flex flex-col justify-center  lg:w-[850px]">
+        <h2 class="text-white text-5xl font-bold flex items-center gap-2"><HabilidadesIcon w="34" h="34" color="#fff" />Habilidades</h2>
+        <div class="relative overflow-hidden sm:w-[650px] flex flex-col justify-center gap-5 lg:w-[850px] mt-20 mb-20 text-white ">
+            <ul class="flex gap-20 justify-center items-center 
+                    relative -top-full
+                    transition animate-[cscroll_30s_linear_infinite_alternate]">
+                    {
+                        ICONOS.map( (icono:any) => {
+                           return (
+                                    <li> 
+                                        <icono.svg w="104" h="104" color="#fff" /> 
+                                    </li>
+                                )
+                        })
+                    }
+                    {
+                        ICONOS.map( (icono:any) => {
+                            return (
+                                    <li> 
+                                        <icono.svg w="104" h="104" color="#fff" /> 
+                                    </li>
+                                )
+                        })
+                    }
+            </ul>
+        </div>
+    </div>
+
+</section>

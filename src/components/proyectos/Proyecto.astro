@@ -1,0 +1,57 @@
+---
+import Etiqueta from '../etiqueta/Etiqueta.astro';
+import GitHubIcon from '../../icons/GitHub.astro';
+
+interface Props
+{
+    titulo: string;
+    descripcion:string;
+    link:string;
+    github:string;
+    imagen:string;
+    etiquetas:any[];
+
+}
+
+const { titulo, descripcion, link, github, imagen, etiquetas } = Astro.props;
+
+
+---
+
+<article class="flex flex-col justify-center gap-5">
+    <h2 class="text-sky-600 text-3xl">{titulo}</h2>
+    
+    <p class="text-lg">{descripcion}</p>
+      
+    <ul class="flex gap-2">
+        {
+            etiquetas.map( (etiqueta:any) => {
+                return (                  
+                    <li>
+                        <span 
+                        class=`flex justify-center items-center gap-1  rounded-lg bg-cyan-950 hover:bg-cyan-900 p-2 hover:scale-110 transition ${etiqueta.estilo}`
+                        >
+                        {etiqueta.invertir?
+                            <>
+                            {etiqueta.nombre}
+                            <etiqueta.svg color="#fff" />
+                            </>
+                            :                         
+                            <>
+                            <etiqueta.svg color="#fff" />
+                            {etiqueta.nombre}
+                            </>
+                        }
+   
+                        </span>
+                    </li>
+                )
+            } )
+        }
+        <Etiqueta href={github}><GitHubIcon />GitHub</Etiqueta>
+    </ul>
+    <a href={link} target=`${link !== ''&& link!== '#'?'_blank':'_self'}`>
+        <img src={imagen} alt=`Imagen del proyecto ${titulo}` 
+        class="object-cover rounded-xl lg:w-[800px] lg:h-[450px] border border-white/10 transition cursor-pointer")>
+    </a>
+</article>

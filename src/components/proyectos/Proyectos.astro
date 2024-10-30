@@ -1,0 +1,105 @@
+---
+import Proyecto from "./Proyecto.astro";
+import TypescripIcono from "../../icons/Typescrip.astro";
+import AngularIcon from "../../icons/Angular.astro";
+import CssIcon from "../../icons/Css.astro";
+import SqlIcon from "../../icons/Sql.astro";
+import CodigoIcon from "../../icons/Codigo.astro";
+import CsharpIcon from "../../icons/Csharp.astro";
+
+interface Proyecto 
+{
+	titulo: string;
+	descripcion:string;
+    link:string;
+    github:string;
+    imagen:string;
+    etiquetas:any[];
+}
+
+interface Props {
+	id: string;
+}
+const { id } = Astro.props;
+
+const TECNOLOGIAS = 
+{
+    TYPESCRIPT:
+    {
+        nombre:"Typescript",
+        estilo:"bg-sky-500  hover:bg-sky-400",
+        svg: TypescripIcono
+    },
+    ANGULAR:
+    {
+        nombre:"Angular",
+        estilo:"bg-red-800  hover:bg-red-700",
+        svg: AngularIcon
+    },
+    CSS:
+    {
+        nombre:"CSS",
+        estilo:"bg-blue-900 hover:bg-blue-800",
+        svg: CssIcon
+    },
+    SQL:
+    {
+        nombre:"",
+        svg: SqlIcon
+    },
+    NOSQL:
+    {
+        nombre:"NO",
+        svg: SqlIcon,
+        invertir:true
+    },
+    CSHARP:
+    {
+        nombre:"",
+        svg: CsharpIcon,
+        estilo:"bg-indigo-800 hover:bg-indigo-700"
+    }
+}
+
+const PROYECTOS:Proyecto[] = 
+[
+    {
+    titulo: "Clínica Online",
+    descripcion: `Esta aplicación web está diseñada para administrar turnos de manera eficiente y accesible para pacientes y especialistas en el ámbito de la salud. Permite a los usuarios solicitar, gestionar y visualizar sus turnos pendientes, así como acceder a su historial clínico. La plataforma facilita la interacción entre pacientes y diversas especialidades médicas, asegurando una experiencia fluida y organizada.`,
+
+    link: "https://angular-clinica-online.web.app/login",
+    github: "https://github.com/GonzaloLem/clinica-online",
+    imagen: "./clinica-imagen.PNG",
+    etiquetas: [TECNOLOGIAS.TYPESCRIPT, TECNOLOGIAS.ANGULAR, TECNOLOGIAS.CSS, TECNOLOGIAS.NOSQL]
+    },
+    {
+        titulo:"Aplicación Crucero",
+        descripcion:'Esta aplicación se ocupa de los pasajes en cruceros a una gran variedad de destinos en diferentes partes del mundo. El punto de partida "siempre" es desde Argentina.',
+        link:"#",
+        github:"https://github.com/GonzaloLem/Aplicacion-Crucero",
+        imagen:"./Crucero.PNG",
+        etiquetas:[TECNOLOGIAS.CSHARP, TECNOLOGIAS.SQL]
+    }
+]
+---
+<section id={id} class="flex justify-center items-center">
+    <div class="relative flex flex-col justify-center gap-5 lg:w-[850px] mt-20 mb-20 text-white">
+        <h2 class="text-white text-5xl font-bold flex items-center gap-2"><CodigoIcon w="34" h="34" color="#fff" />Proyectos</h2>
+            <ul class="flex flex-col gap-10">
+                {
+                    PROYECTOS.map( (proyecto) => {
+                        return (<li>
+                                <Proyecto 
+                                    titulo={proyecto.titulo} 
+                                    descripcion={proyecto.descripcion}
+                                    link={proyecto.link}
+                                    github={proyecto.github}
+                                    imagen={proyecto.imagen}
+                                    etiquetas={proyecto.etiquetas}>
+                                </Proyecto>
+                            </li>)
+                    })
+                }
+            </ul>
+    </div>
+</section>
